@@ -145,3 +145,14 @@ C:\Users\thang\Source\Repos\DuBaoGiaNha\DuBaoGiaNha\DuBaoGiaNha\obj\Debug\DuBaoG
 C:\Users\thang\Source\Repos\DuBaoGiaNha\DuBaoGiaNha\DuBaoGiaNha\obj\Debug\DuBaoGiaNha.Properties.Resources.resources
 C:\Users\thang\Source\Repos\DuBaoGiaNha\DuBaoGiaNha\DuBaoGiaNha\obj\Debug\DuBaoGiaNha.csproj.GenerateResource.Cache
 C:\Users\thang\Source\Repos\DuBaoGiaNha\DuBaoGiaNha\DuBaoGiaNha\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\thang\Source\Repos\DuBaoGiaNha\DuBaoGiaNha\DuBaoGiaNha\obj\Debug\DuBaoGiaNha.AddObjMng.resources
+C:\Users\thang\Source\Repos\DuBaoGiaNha\DuBaoGiaNha\DuBaoGiaNha\obj\Debug\DuBaoGiaNha.AddOneObj.resources
+C:\Users\thang\Source\Repos\DuBaoGiaNha\DuBaoGiaNha\DuBaoGiaNha\obj\Debug\DuBaoGiaNha.AddManyObj.resources
+C:\Users\thang\Source\Repos\DuBaoGiaNha\DuBaoGiaNha\DuBaoGiaNha\obj\Debug\DuBaoGiaNha.UpdateObjMng.resources
+C:\Users\thang\Source\Repos\DuBaoGiaNha\DuBaoGiaNha\DuBaoGiaNha\obj\Debug\DuBaoGiaNha.UpdateOneObj.resources
+C:\Users\thang\Source\Repos\DuBaoGiaNha\DuBaoGiaNha\DuBaoGiaNha\obj\Debug\DuBaoGiaNha.UpdateManyObj.resources
+C:\Users\thang\Source\Repos\DuBaoGiaNha\DuBaoGiaNha\DuBaoGiaNha\obj\Debug\DuBaoGiaNha.DeleteObjMng.resources
+C:\Users\thang\Source\Repos\DuBaoGiaNha\DuBaoGiaNha\DuBaoGiaNha\obj\Debug\DuBaoGiaNha.DeleteOneObj.resources
+C:\Users\thang\Source\Repos\DuBaoGiaNha\DuBaoGiaNha\DuBaoGiaNha\obj\Debug\DuBaoGiaNha.DeleteManyObj.resources
+C:\Users\thang\Source\Repos\DuBaoGiaNha\DuBaoGiaNha\DuBaoGiaNha\obj\Debug\DuBaoGiaNha.VisualDataMng.resources
+C:\Users\thang\Source\Repos\DuBaoGiaNha\DuBaoGiaNha\DuBaoGiaNha\obj\Debug\DuBaoGiaNha.VusalData.resources

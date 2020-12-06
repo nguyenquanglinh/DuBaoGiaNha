@@ -44,29 +44,30 @@
             this.txtPageCurrent = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbbSTT = new System.Windows.Forms.ComboBox();
-            this.cbbArea = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbbAvailabitity = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbbLocation = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbbSize = new System.Windows.Forms.ComboBox();
-            this.a = new System.Windows.Forms.Label();
-            this.cbbSociety = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbbBath = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbbBalcony = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cbbPrice = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cbbTotalSqft = new System.Windows.Forms.ComboBox();
+            this.cbbPrice = new System.Windows.Forms.ComboBox();
+            this.cbbBalcony = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbbBath = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbbSociety = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbbSize = new System.Windows.Forms.ComboBox();
+            this.a = new System.Windows.Forms.Label();
+            this.cbbLocation = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbbAvailabitity = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbbArea = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbbSTT = new System.Windows.Forms.ComboBox();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtID = new System.Windows.Forms.TextBox();
+            this.btnTrucQuan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -228,115 +229,30 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
             // 
-            // cbbSTT
+            // label10
             // 
-            this.cbbSTT.FormattingEnabled = true;
-            this.cbbSTT.Location = new System.Drawing.Point(88, 12);
-            this.cbbSTT.Name = "cbbSTT";
-            this.cbbSTT.Size = new System.Drawing.Size(148, 21);
-            this.cbbSTT.TabIndex = 6;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 249);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 13);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "TotalSqft ";
             // 
-            // cbbArea
+            // cbbTotalSqft
             // 
-            this.cbbArea.FormattingEnabled = true;
-            this.cbbArea.Location = new System.Drawing.Point(88, 44);
-            this.cbbArea.Name = "cbbArea";
-            this.cbbArea.Size = new System.Drawing.Size(148, 21);
-            this.cbbArea.TabIndex = 8;
+            this.cbbTotalSqft.FormattingEnabled = true;
+            this.cbbTotalSqft.Location = new System.Drawing.Point(88, 241);
+            this.cbbTotalSqft.Name = "cbbTotalSqft";
+            this.cbbTotalSqft.Size = new System.Drawing.Size(148, 21);
+            this.cbbTotalSqft.TabIndex = 23;
             // 
-            // label2
+            // cbbPrice
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "AreaType ";
-            // 
-            // cbbAvailabitity
-            // 
-            this.cbbAvailabitity.FormattingEnabled = true;
-            this.cbbAvailabitity.Location = new System.Drawing.Point(88, 81);
-            this.cbbAvailabitity.Name = "cbbAvailabitity";
-            this.cbbAvailabitity.Size = new System.Drawing.Size(148, 21);
-            this.cbbAvailabitity.TabIndex = 10;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 89);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Availability";
-            // 
-            // cbbLocation
-            // 
-            this.cbbLocation.FormattingEnabled = true;
-            this.cbbLocation.Location = new System.Drawing.Point(88, 123);
-            this.cbbLocation.Name = "cbbLocation";
-            this.cbbLocation.Size = new System.Drawing.Size(148, 21);
-            this.cbbLocation.TabIndex = 12;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 333);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Balcony";
-            // 
-            // cbbSize
-            // 
-            this.cbbSize.FormattingEnabled = true;
-            this.cbbSize.Location = new System.Drawing.Point(88, 160);
-            this.cbbSize.Name = "cbbSize";
-            this.cbbSize.Size = new System.Drawing.Size(148, 21);
-            this.cbbSize.TabIndex = 14;
-            // 
-            // a
-            // 
-            this.a.AutoSize = true;
-            this.a.Location = new System.Drawing.Point(6, 291);
-            this.a.Name = "a";
-            this.a.Size = new System.Drawing.Size(29, 13);
-            this.a.TabIndex = 13;
-            this.a.Text = "Bath";
-            // 
-            // cbbSociety
-            // 
-            this.cbbSociety.FormattingEnabled = true;
-            this.cbbSociety.Location = new System.Drawing.Point(88, 201);
-            this.cbbSociety.Name = "cbbSociety";
-            this.cbbSociety.Size = new System.Drawing.Size(148, 21);
-            this.cbbSociety.TabIndex = 16;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 131);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Location";
-            // 
-            // cbbBath
-            // 
-            this.cbbBath.FormattingEnabled = true;
-            this.cbbBath.Location = new System.Drawing.Point(88, 283);
-            this.cbbBath.Name = "cbbBath";
-            this.cbbBath.Size = new System.Drawing.Size(148, 21);
-            this.cbbBath.TabIndex = 18;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 168);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(27, 13);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Size";
+            this.cbbPrice.FormattingEnabled = true;
+            this.cbbPrice.Location = new System.Drawing.Point(88, 362);
+            this.cbbPrice.Name = "cbbPrice";
+            this.cbbPrice.Size = new System.Drawing.Size(148, 21);
+            this.cbbPrice.TabIndex = 22;
             // 
             // cbbBalcony
             // 
@@ -355,14 +271,6 @@
             this.label8.TabIndex = 19;
             this.label8.Text = "Society";
             // 
-            // cbbPrice
-            // 
-            this.cbbPrice.FormattingEnabled = true;
-            this.cbbPrice.Location = new System.Drawing.Point(88, 362);
-            this.cbbPrice.Name = "cbbPrice";
-            this.cbbPrice.Size = new System.Drawing.Size(148, 21);
-            this.cbbPrice.TabIndex = 22;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -372,31 +280,124 @@
             this.label9.TabIndex = 21;
             this.label9.Text = "Price";
             // 
-            // label10
+            // cbbBath
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 249);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 13);
-            this.label10.TabIndex = 24;
-            this.label10.Text = "TotalSqft ";
+            this.cbbBath.FormattingEnabled = true;
+            this.cbbBath.Location = new System.Drawing.Point(88, 283);
+            this.cbbBath.Name = "cbbBath";
+            this.cbbBath.Size = new System.Drawing.Size(148, 21);
+            this.cbbBath.TabIndex = 18;
             // 
-            // cbbTotalSqft
+            // label7
             // 
-            this.cbbTotalSqft.FormattingEnabled = true;
-            this.cbbTotalSqft.Location = new System.Drawing.Point(88, 241);
-            this.cbbTotalSqft.Name = "cbbTotalSqft";
-            this.cbbTotalSqft.Size = new System.Drawing.Size(148, 21);
-            this.cbbTotalSqft.TabIndex = 23;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 168);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(27, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Size";
+            // 
+            // cbbSociety
+            // 
+            this.cbbSociety.FormattingEnabled = true;
+            this.cbbSociety.Location = new System.Drawing.Point(88, 201);
+            this.cbbSociety.Name = "cbbSociety";
+            this.cbbSociety.Size = new System.Drawing.Size(148, 21);
+            this.cbbSociety.TabIndex = 16;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 131);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Location";
+            // 
+            // cbbSize
+            // 
+            this.cbbSize.FormattingEnabled = true;
+            this.cbbSize.Location = new System.Drawing.Point(88, 160);
+            this.cbbSize.Name = "cbbSize";
+            this.cbbSize.Size = new System.Drawing.Size(148, 21);
+            this.cbbSize.TabIndex = 14;
+            // 
+            // a
+            // 
+            this.a.AutoSize = true;
+            this.a.Location = new System.Drawing.Point(6, 291);
+            this.a.Name = "a";
+            this.a.Size = new System.Drawing.Size(29, 13);
+            this.a.TabIndex = 13;
+            this.a.Text = "Bath";
+            // 
+            // cbbLocation
+            // 
+            this.cbbLocation.FormattingEnabled = true;
+            this.cbbLocation.Location = new System.Drawing.Point(88, 123);
+            this.cbbLocation.Name = "cbbLocation";
+            this.cbbLocation.Size = new System.Drawing.Size(148, 21);
+            this.cbbLocation.TabIndex = 12;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 333);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Balcony";
+            // 
+            // cbbAvailabitity
+            // 
+            this.cbbAvailabitity.FormattingEnabled = true;
+            this.cbbAvailabitity.Location = new System.Drawing.Point(88, 81);
+            this.cbbAvailabitity.Name = "cbbAvailabitity";
+            this.cbbAvailabitity.Size = new System.Drawing.Size(148, 21);
+            this.cbbAvailabitity.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 89);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Availability";
+            // 
+            // cbbArea
+            // 
+            this.cbbArea.FormattingEnabled = true;
+            this.cbbArea.Location = new System.Drawing.Point(88, 44);
+            this.cbbArea.Name = "cbbArea";
+            this.cbbArea.Size = new System.Drawing.Size(148, 21);
+            this.cbbArea.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "AreaType ";
+            // 
+            // cbbSTT
+            // 
+            this.cbbSTT.FormattingEnabled = true;
+            this.cbbSTT.Location = new System.Drawing.Point(88, 12);
+            this.cbbSTT.Name = "cbbSTT";
+            this.cbbSTT.Size = new System.Drawing.Size(148, 21);
+            this.cbbSTT.TabIndex = 6;
             // 
             // btnXoa
             // 
             this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnXoa.Location = new System.Drawing.Point(861, 431);
+            this.btnXoa.Location = new System.Drawing.Point(773, 435);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(68, 23);
+            this.btnXoa.Size = new System.Drawing.Size(113, 23);
             this.btnXoa.TabIndex = 7;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -438,11 +439,25 @@
             this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtID.Visible = false;
             // 
+            // btnTrucQuan
+            // 
+            this.btnTrucQuan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTrucQuan.Location = new System.Drawing.Point(906, 435);
+            this.btnTrucQuan.Name = "btnTrucQuan";
+            this.btnTrucQuan.Size = new System.Drawing.Size(109, 23);
+            this.btnTrucQuan.TabIndex = 11;
+            this.btnTrucQuan.Text = "Trực quan hóa";
+            this.btnTrucQuan.UseVisualStyleBackColor = true;
+            this.btnTrucQuan.Click += new System.EventHandler(this.btnTrucQuan_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1027, 463);
+            this.Controls.Add(this.btnTrucQuan);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnSua);
@@ -453,8 +468,10 @@
             this.Controls.Add(this.btnTruoc);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Main";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -504,6 +521,7 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Button btnTrucQuan;
     }
 }
 

@@ -3,6 +3,9 @@ using System.Linq;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
+using System.Threading;
+using System.Windows.Forms;
+using System.IO;
 
 namespace DuBaoGiaNha
 {
@@ -12,6 +15,9 @@ namespace DuBaoGiaNha
         private static int pageCurrent = 0;
         private static int pageSize = 15;
         private static int maxPageNumber = 0;
+
+        public List<BsonDocument> DataIList { get; private set; }
+
         public int GetPageSize()
         {
             return pageSize;
@@ -28,13 +34,15 @@ namespace DuBaoGiaNha
         {
             return GetPageCurrent().ToString() + "/" + GetMaxPageNumber().ToString();
         }
-
+  
         private void InitData()
         {
             MongoClient client = new MongoClient("mongodb://localhost:27017");
             IMongoDatabase database = client.GetDatabase("BaoGiaNha");
             Collection = database.GetCollection<BsonDocument>("BaoGiaNha");
-            maxPageNumber = Collection.Find(new BsonDocument()).ToList().Count / pageSize+1;
+            this.DataIList = Collection.Find(new BsonDocument()).ToList();
+            new Statistical(DataIList,true);
+            maxPageNumber = DataIList.Count / pageSize + 1;
         }
         public PagingData()
         {
@@ -42,6 +50,19 @@ namespace DuBaoGiaNha
             {
                 InitData();
             }
+
+        }
+        public int InsertDatas(string path, TextBox txtValue)
+        {
+            var lines = File.ReadAllLines(path);
+            lines.ToList().RemoveAt(0);
+            foreach (var item in lines)
+            {
+                InsertData(new GiaNha(item));
+                txtValue.AppendText(item);
+            }
+            maxPageNumber = Collection.Find(new BsonDocument()).ToList().Count / pageSize + 1;
+            return lines.Length;
         }
         public Result GetListpageBson(int next)
         {
@@ -69,8 +90,6 @@ namespace DuBaoGiaNha
             ret.ListGiaNha = dsGia;
             return ret;
         }
-
-
         public Result InsertData(GiaNha item)
         {
             try
@@ -94,12 +113,14 @@ namespace DuBaoGiaNha
                 return new Result(true, e.ToString());
             }
         }
-
-        public Result UpdateData(GiaNha item)
+        public Result UpdateData(GiaNha item, string filer = "_id", string value = null, bool updateOne = true)
         {
             try
             {
-                FilterDefinition<BsonDocument> filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(item.Id));
+                FilterDefinition<BsonDocument> filter;
+                if (value == null)
+                    filter = Builders<BsonDocument>.Filter.Eq(filer, ObjectId.Parse(item.Id));
+                else filter = Builders<BsonDocument>.Filter.Eq(filer, value);
                 UpdateDefinition<BsonDocument> update = Builders<BsonDocument>.Update
                                                             .Set("area_type", item.AreaType)
                                                             .Set("availability", item.Availability)
@@ -110,8 +131,9 @@ namespace DuBaoGiaNha
                                                             .Set("bath", item.Bath)
                                                             .Set("balcony", item.Balcony)
                                                             .Set("price", item.Price);
-
-                Collection.UpdateOne(filter, update);
+                if (updateOne)
+                    Collection.UpdateOne(filter, update);
+                else Collection.UpdateMany(filter, update);
                 return new Result(false, "UpdateData Successful");
             }
             catch (Exception e)
@@ -119,14 +141,76 @@ namespace DuBaoGiaNha
                 return new Result(true, e.ToString());
             }
         }
-
-        public Result DeleteData(GiaNha item)
+        public Result UpdateData(GiaNha item, GiaNha giaNha)
         {
             try
             {
-                FilterDefinition<BsonDocument> filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(item.Id) );
-                Collection.DeleteOne(filter);
+                if (item.AreaType != giaNha.AreaType)
+                    UpdateData(giaNha, "area_type", item.AreaType, false);
+                if (item.Availability != giaNha.Availability)
+                    UpdateData(giaNha, "availability", item.Availability, false);
+                if (item.Location != giaNha.Location)
+                    UpdateData(giaNha, "location", item.Location, false);
+                if (item.Size != giaNha.Size)
+                    UpdateData(giaNha, "size", item.Size, false);
+                if (item.Society != giaNha.Society)
+                    UpdateData(giaNha, "society", item.Society, false);
+                if (item.TotalSqft != giaNha.TotalSqft)
+                    UpdateData(giaNha, "total_sqft", item.TotalSqft, false);
+                if (item.Bath != giaNha.Bath)
+                    UpdateData(giaNha, "bath", item.Bath, false);
+                if (item.Balcony != giaNha.Balcony)
+                    UpdateData(giaNha, "balcony", item.Balcony, false);
+                if (item.Price != giaNha.Price)
+                    UpdateData(giaNha, "price", item.Price, false);
+                return new Result(false, "UpdateData Successful");
+            }
+            catch (Exception e)
+            {
+                return new Result(true, e.ToString());
+            }
+        }
+        public Result DeleteData(GiaNha giaCu, string filer = "_id", string value = null, bool updateOne = true)
+        {
+            try
+            {
+                FilterDefinition<BsonDocument> filter;
+                if (value == null)
+                    filter = Builders<BsonDocument>.Filter.Eq(filer, ObjectId.Parse(giaCu.Id));
+                else filter = Builders<BsonDocument>.Filter.Eq(filer, value);
+                if (updateOne)
+                    Collection.DeleteOne(filter);
+                else Collection.DeleteMany(filter);
                 return new Result(false, "DeleteData Successful");
+            }
+            catch (Exception e)
+            {
+                return new Result(true, e.ToString());
+            }
+        }
+        public Result DeleteDatas(GiaNha giaCu, GiaNha giaMoi)
+        {
+            try
+            {
+                if (giaCu.AreaType != giaMoi.AreaType)
+                    DeleteData(giaCu, "area_type", giaCu.AreaType, false);
+                if (giaCu.Availability != giaMoi.Availability)
+                    DeleteData(giaCu, "availability", giaCu.Availability, false);
+                if (giaCu.Location != giaMoi.Location)
+                    DeleteData(giaCu, "location", giaCu.Location, false);
+                if (giaCu.Size != giaMoi.Size)
+                    DeleteData(giaCu, "size", giaCu.Size, false);
+                if (giaCu.Society != giaMoi.Society)
+                    DeleteData(giaCu, "society", giaCu.Society, false);
+                if (giaCu.TotalSqft != giaMoi.TotalSqft)
+                    DeleteData(giaCu, "total_sqft", giaCu.TotalSqft, false);
+                if (giaCu.Bath != giaMoi.Bath)
+                    DeleteData(giaCu, "bath", giaCu.Bath, false);
+                if (giaCu.Balcony != giaMoi.Balcony)
+                    DeleteData(giaCu, "balcony", giaCu.Balcony, false);
+                if (giaCu.Price != giaMoi.Price)
+                    DeleteData(giaCu, "price", giaCu.Price, false);
+                return new Result(false, "Delete Successful");
             }
             catch (Exception e)
             {

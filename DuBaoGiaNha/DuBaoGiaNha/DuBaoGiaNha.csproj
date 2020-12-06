@@ -100,6 +100,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -110,6 +111,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="add\AddManyObj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add\AddManyObj.Designer.cs">
+      <DependentUpon>AddManyObj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add\AddObjMng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add\AddObjMng.Designer.cs">
+      <DependentUpon>AddObjMng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add\AddOneObj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add\AddOneObj.Designer.cs">
+      <DependentUpon>AddOneObj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delete\DeleteManyObj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delete\DeleteManyObj.Designer.cs">
+      <DependentUpon>DeleteManyObj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delete\DeleteObjMng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delete\DeleteObjMng.Designer.cs">
+      <DependentUpon>DeleteObjMng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delete\DeleteOneObj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delete\DeleteOneObj.Designer.cs">
+      <DependentUpon>DeleteOneObj.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,10 +154,60 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GiaNha.cs" />
+    <Compile Include="InitData.cs" />
     <Compile Include="PagingData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result.cs" />
+    <Compile Include="Statistical.cs" />
+    <Compile Include="update\UpdateManyObj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="update\UpdateManyObj.Designer.cs">
+      <DependentUpon>UpdateManyObj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="update\UpdateObjMng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="update\UpdateObjMng.Designer.cs">
+      <DependentUpon>UpdateObjMng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="update\UpdateOneObj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="update\UpdateOneObj.Designer.cs">
+      <DependentUpon>UpdateOneObj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisualDataMng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisualDataMng.Designer.cs">
+      <DependentUpon>VisualDataMng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VusalData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VusalData.Designer.cs">
+      <DependentUpon>VusalData.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="add\AddManyObj.resx">
+      <DependentUpon>AddManyObj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add\AddObjMng.resx">
+      <DependentUpon>AddObjMng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add\AddOneObj.resx">
+      <DependentUpon>AddOneObj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delete\DeleteManyObj.resx">
+      <DependentUpon>DeleteManyObj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delete\DeleteObjMng.resx">
+      <DependentUpon>DeleteObjMng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delete\DeleteOneObj.resx">
+      <DependentUpon>DeleteOneObj.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +221,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="update\UpdateManyObj.resx">
+      <DependentUpon>UpdateManyObj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="update\UpdateObjMng.resx">
+      <DependentUpon>UpdateObjMng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="update\UpdateOneObj.resx">
+      <DependentUpon>UpdateOneObj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisualDataMng.resx">
+      <DependentUpon>VisualDataMng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VusalData.resx">
+      <DependentUpon>VusalData.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -148,5 +250,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

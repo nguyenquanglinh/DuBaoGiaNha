@@ -1,0 +1,271 @@
+diff --git a/DuBaoGiaNha/DuBaoGiaNha/Form1.cs b/DuBaoGiaNha/DuBaoGiaNha/Form1.cs
+index bfb0900..84723a3 100644
+--- a/DuBaoGiaNha/DuBaoGiaNha/Form1.cs
++++ b/DuBaoGiaNha/DuBaoGiaNha/Form1.cs
+@@ -14,12 +14,11 @@ namespace DuBaoGiaNha
+         public Form1()
+         {
+             InitializeComponent();
+-            //this.MinimizeBox = false;
+             this.MaximizeBox = false;
+             data = new PagingData();
+             txtPageCurrent.Text = data.GetMaxPageNumber().ToString();
+         }
+-        List<GiaNha> dsCurrent;
++        public List<GiaNha> dsCurrent { get; set; }
+         void ShowData(int next)
+         {
+             var ret = data.GetListPageGia(next);
+@@ -51,59 +50,10 @@ namespace DuBaoGiaNha
+ 
+             }
+         }
+-        private void CbbClear()
+-        {
+-            dataGridView1.Rows.Clear();
+-            cbbSTT.Items.Clear();
+-            cbbArea.Items.Clear();
+-            cbbAvailabitity.Items.Clear();
+-            cbbLocation.Items.Clear();
+-            cbbSize.Items.Clear();
+-            cbbSociety.Items.Clear();
+-            cbbTotalSqft.Items.Clear();
+-            cbbBath.Items.Clear();
+-            cbbBalcony.Items.Clear();
+-            cbbPrice.Items.Clear();
+-        }
+-        private void DataGridViewAddValue(GiaNha item, int rowIndex)
+-        {
+-            dataGridView1.Rows[rowIndex].Cells["STT"].Value = item.STT;
+-            dataGridView1.Rows[rowIndex].Cells["Aretype"].Value = item.AreaType;
+-            dataGridView1.Rows[rowIndex].Cells["Availability"].Value = item.Availability;
+-            dataGridView1.Rows[rowIndex].Cells["Balcony"].Value = item.Balcony;
+-            dataGridView1.Rows[rowIndex].Cells["Bath"].Value = item.Bath;
+-            dataGridView1.Rows[rowIndex].Cells["Location"].Value = item.Location;
+-            dataGridView1.Rows[rowIndex].Cells["Price"].Value = item.Price;
+-            dataGridView1.Rows[rowIndex].Cells["Size"].Value = item.Size;
+-            dataGridView1.Rows[rowIndex].Cells["Society"].Value = item.Society;
+-            dataGridView1.Rows[rowIndex].Cells["TotalSqft"].Value = item.TotalSqft;
+-        }
+-        private void CbbAddValue(GiaNha item)
+-        {
+-            cbbSTT.Items.Add(item.STT);
+-            cbbArea.Items.Add(item.AreaType);
+-            cbbAvailabitity.Items.Add(item.Availability);
+-            cbbBalcony.Items.Add(item.Balcony);
+-            cbbBath.Items.Add(item.Bath);
+-            cbbLocation.Items.Add(item.Location);
+-            cbbPrice.Items.Add(item.Price);
+-            cbbSize.Items.Add(item.Size);
+-            cbbSociety.Items.Add(item.Society);
+-            cbbTotalSqft.Items.Add(item.TotalSqft);
+-        }
+-
+         private void InitData(Result ret, int index)
+         {
+             dsCurrent = ret.ListGiaNha;
+-            CbbClear();
+-            int stt = 0;
+-            for (int i = 0; i < dsCurrent.Count; i++)
+-            {
+-                stt = index + i;
+-                dsCurrent[i].STT = stt;
+-                DataGridViewAddValue(dsCurrent[i], this.dataGridView1.Rows.Add());
+-                CbbAddValue(dsCurrent[i]);
+-            }
++            new InitData(dsCurrent, dataGridView1, cbbArea, cbbAvailabitity, cbbLocation, cbbSize, cbbSociety, cbbTotalSqft, cbbBath, cbbBalcony, cbbPrice, cbbSTT).InitDataGridView(index);
+             txtPageCurrent.Text = data.PageCurrent();
+         }
+ 
+@@ -113,22 +63,18 @@ namespace DuBaoGiaNha
+         }
+         private void SetValueToCbb(int rowIndex)
+         {
++            if (rowIndex < 0) return;
+             txtID.Text = dsCurrent[rowIndex].Id;
+-            cbbSTT.SelectedText = dataGridView1.Rows[rowIndex].Cells["STT"].Value.ToString();
+-            cbbArea.SelectedText = dataGridView1.Rows[rowIndex].Cells["Aretype"].Value.ToString();
+-            cbbAvailabitity.SelectedText = dataGridView1.Rows[rowIndex].Cells["Availability"].Value.ToString();
+-            cbbBalcony.SelectedText = dataGridView1.Rows[rowIndex].Cells["Balcony"].Value.ToString();
+-            cbbBath.SelectedText = dataGridView1.Rows[rowIndex].Cells["Bath"].Value.ToString();
+-            cbbLocation.SelectedText = dataGridView1.Rows[rowIndex].Cells["Location"].Value.ToString();
+-            cbbPrice.SelectedText = dataGridView1.Rows[rowIndex].Cells["Price"].Value.ToString();
+-            cbbSize.SelectedText = dataGridView1.Rows[rowIndex].Cells["Size"].Value.ToString();
+-            cbbSociety.SelectedText = dataGridView1.Rows[rowIndex].Cells["Society"].Value.ToString();
+-            cbbTotalSqft.SelectedText = dataGridView1.Rows[rowIndex].Cells["TotalSqft"].Value.ToString();
+-        }
+-
+-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+-        {
+-           
++            cbbSTT.SelectedText = cbbSTT.Items[rowIndex].ToString();
++            cbbArea.SelectedText = cbbArea.Items[rowIndex].ToString();
++            cbbAvailabitity.SelectedText = cbbAvailabitity.Items[rowIndex].ToString();
++            cbbBalcony.SelectedText = cbbBalcony.Items[rowIndex].ToString();
++            cbbBath.SelectedText = cbbBath.Items[rowIndex].ToString();
++            cbbLocation.SelectedText =cbbLocation.Items[rowIndex].ToString();
++            cbbPrice.SelectedText = cbbPrice.Items[rowIndex].ToString();
++            cbbSize.SelectedText =cbbSize.Items[rowIndex].ToString();
++            cbbSociety.SelectedText = cbbSociety.Items[rowIndex].ToString();
++            cbbTotalSqft.SelectedText =cbbTotalSqft.Items[rowIndex].ToString();
+         }
+ 
+         private void btnTruoc_Click(object sender, System.EventArgs e)
+@@ -143,8 +89,8 @@ namespace DuBaoGiaNha
+ 
+         private void btnThem_Click(object sender, System.EventArgs e)
+         {
+-            data.InsertData(new GiaNha(txtID.Text, cbbArea.Text, cbbAvailabitity.Text, cbbLocation.Text, cbbSize.Text, cbbSociety.Text, cbbTotalSqft.Text, cbbBath.Text, cbbBalcony.Text, cbbPrice.Text));
+-            ShowData(0);
++            new AddObjMng(this).Show();
++            this.Hide();
+         }
+ 
+         private void btnXoa_Click(object sender, System.EventArgs e)
+diff --git a/DuBaoGiaNha/DuBaoGiaNha/Form1.cs b/DuBaoGiaNha/DuBaoGiaNha/Form1.cs
+index bfb0900..10af854 100644
+--- a/DuBaoGiaNha/DuBaoGiaNha/Form1.cs
++++ b/DuBaoGiaNha/DuBaoGiaNha/Form1.cs
+@@ -14,12 +14,11 @@ namespace DuBaoGiaNha
+         public Form1()
+         {
+             InitializeComponent();
+-            //this.MinimizeBox = false;
+             this.MaximizeBox = false;
+             data = new PagingData();
+             txtPageCurrent.Text = data.GetMaxPageNumber().ToString();
+         }
+-        List<GiaNha> dsCurrent;
++        public List<GiaNha> dsCurrent { get; set; }
+         void ShowData(int next)
+         {
+             var ret = data.GetListPageGia(next);
+@@ -51,59 +50,10 @@ namespace DuBaoGiaNha
+ 
+             }
+         }
+-        private void CbbClear()
+-        {
+-            dataGridView1.Rows.Clear();
+-            cbbSTT.Items.Clear();
+-            cbbArea.Items.Clear();
+-            cbbAvailabitity.Items.Clear();
+-            cbbLocation.Items.Clear();
+-            cbbSize.Items.Clear();
+-            cbbSociety.Items.Clear();
+-            cbbTotalSqft.Items.Clear();
+-            cbbBath.Items.Clear();
+-            cbbBalcony.Items.Clear();
+-            cbbPrice.Items.Clear();
+-        }
+-        private void DataGridViewAddValue(GiaNha item, int rowIndex)
+-        {
+-            dataGridView1.Rows[rowIndex].Cells["STT"].Value = item.STT;
+-            dataGridView1.Rows[rowIndex].Cells["Aretype"].Value = item.AreaType;
+-            dataGridView1.Rows[rowIndex].Cells["Availability"].Value = item.Availability;
+-            dataGridView1.Rows[rowIndex].Cells["Balcony"].Value = item.Balcony;
+-            dataGridView1.Rows[rowIndex].Cells["Bath"].Value = item.Bath;
+-            dataGridView1.Rows[rowIndex].Cells["Location"].Value = item.Location;
+-            dataGridView1.Rows[rowIndex].Cells["Price"].Value = item.Price;
+-            dataGridView1.Rows[rowIndex].Cells["Size"].Value = item.Size;
+-            dataGridView1.Rows[rowIndex].Cells["Society"].Value = item.Society;
+-            dataGridView1.Rows[rowIndex].Cells["TotalSqft"].Value = item.TotalSqft;
+-        }
+-        private void CbbAddValue(GiaNha item)
+-        {
+-            cbbSTT.Items.Add(item.STT);
+-            cbbArea.Items.Add(item.AreaType);
+-            cbbAvailabitity.Items.Add(item.Availability);
+-            cbbBalcony.Items.Add(item.Balcony);
+-            cbbBath.Items.Add(item.Bath);
+-            cbbLocation.Items.Add(item.Location);
+-            cbbPrice.Items.Add(item.Price);
+-            cbbSize.Items.Add(item.Size);
+-            cbbSociety.Items.Add(item.Society);
+-            cbbTotalSqft.Items.Add(item.TotalSqft);
+-        }
+-
+         private void InitData(Result ret, int index)
+         {
+             dsCurrent = ret.ListGiaNha;
+-            CbbClear();
+-            int stt = 0;
+-            for (int i = 0; i < dsCurrent.Count; i++)
+-            {
+-                stt = index + i;
+-                dsCurrent[i].STT = stt;
+-                DataGridViewAddValue(dsCurrent[i], this.dataGridView1.Rows.Add());
+-                CbbAddValue(dsCurrent[i]);
+-            }
++            new InitData(dsCurrent, dataGridView1, cbbArea, cbbAvailabitity, cbbLocation, cbbSize, cbbSociety, cbbTotalSqft, cbbBath, cbbBalcony, cbbPrice, cbbSTT).InitDataGridView(index);
+             txtPageCurrent.Text = data.PageCurrent();
+         }
+ 
+@@ -113,22 +63,24 @@ namespace DuBaoGiaNha
+         }
+         private void SetValueToCbb(int rowIndex)
+         {
+-            txtID.Text = dsCurrent[rowIndex].Id;
+-            cbbSTT.SelectedText = dataGridView1.Rows[rowIndex].Cells["STT"].Value.ToString();
+-            cbbArea.SelectedText = dataGridView1.Rows[rowIndex].Cells["Aretype"].Value.ToString();
+-            cbbAvailabitity.SelectedText = dataGridView1.Rows[rowIndex].Cells["Availability"].Value.ToString();
+-            cbbBalcony.SelectedText = dataGridView1.Rows[rowIndex].Cells["Balcony"].Value.ToString();
+-            cbbBath.SelectedText = dataGridView1.Rows[rowIndex].Cells["Bath"].Value.ToString();
+-            cbbLocation.SelectedText = dataGridView1.Rows[rowIndex].Cells["Location"].Value.ToString();
+-            cbbPrice.SelectedText = dataGridView1.Rows[rowIndex].Cells["Price"].Value.ToString();
+-            cbbSize.SelectedText = dataGridView1.Rows[rowIndex].Cells["Size"].Value.ToString();
+-            cbbSociety.SelectedText = dataGridView1.Rows[rowIndex].Cells["Society"].Value.ToString();
+-            cbbTotalSqft.SelectedText = dataGridView1.Rows[rowIndex].Cells["TotalSqft"].Value.ToString();
+-        }
+-
+-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+-        {
+-           
++            if (rowIndex < 0) return;
++            try
++            {
++                txtID.Text = dsCurrent[rowIndex].Id;
++                cbbSTT.Text = dsCurrent[rowIndex].STT.ToString();
++                cbbArea.Text = dsCurrent[rowIndex].AreaType.ToString();
++                cbbAvailabitity.Text = dsCurrent[rowIndex].Availability.ToString();
++                cbbBalcony.Text = dsCurrent[rowIndex].Balcony.ToString();
++                cbbBath.Text = dsCurrent[rowIndex].Bath.ToString();
++                cbbLocation.Text = dsCurrent[rowIndex].Location.ToString();
++                cbbPrice.Text = dsCurrent[rowIndex].Price.ToString();
++                cbbSize.Text = dsCurrent[rowIndex].Size.ToString();
++                cbbSociety.Text = dsCurrent[rowIndex].Society.ToString();
++                cbbTotalSqft.Text = dsCurrent[rowIndex].TotalSqft.ToString();
++            }
++            catch
++            {
++            }
+         }
+ 
+         private void btnTruoc_Click(object sender, System.EventArgs e)
+@@ -143,8 +95,8 @@ namespace DuBaoGiaNha
+ 
+         private void btnThem_Click(object sender, System.EventArgs e)
+         {
+-            data.InsertData(new GiaNha(txtID.Text, cbbArea.Text, cbbAvailabitity.Text, cbbLocation.Text, cbbSize.Text, cbbSociety.Text, cbbTotalSqft.Text, cbbBath.Text, cbbBalcony.Text, cbbPrice.Text));
+-            ShowData(0);
++            new AddObjMng(this).Show();
++            this.Hide();
+         }
+ 
+         private void btnXoa_Click(object sender, System.EventArgs e)
+@@ -159,12 +111,9 @@ namespace DuBaoGiaNha
+ 
+         private void btnSua_Click(object sender, System.EventArgs e)
+         {
+-            if (txtID.Text.Length == 0) MessageBox.Show("Thông báo", "Chưa xác định được đối tượng cần sửa.Cần chọn 1 đối tượng để sửa");
+-            else
+-            {
+-                data.UpdateData(new GiaNha(txtID.Text, cbbArea.Text, cbbAvailabitity.Text, cbbLocation.Text, cbbSize.Text, cbbSociety.Text, cbbTotalSqft.Text, cbbBath.Text, cbbBalcony.Text, cbbPrice.Text));
+-                ShowData(0);
+-            }
++            if (txtID.Text != null)
++                new UpdateObjMng(this, txtID.Text).Show();
++            else MessageBox.Show("Cần chọn 1 giá trị để sửa.", "Hướng dẫn", MessageBoxButtons.OK);
+         }
+ 
+         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

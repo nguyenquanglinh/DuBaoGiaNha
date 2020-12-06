@@ -31,6 +31,22 @@ namespace DuBaoGiaNha
                 document["price"].ToString())
         {
         }
+
+        public GiaNha(string item)
+        {
+            var pro = item.Split(',');
+            if (pro.Length != 9) return;
+            AreaType = pro[0];
+            Availability = pro[1];
+            Location = pro[2];
+            Size = pro[3];
+            Society = pro[4];
+            TotalSqft = pro[5];
+            Bath = pro[6];
+            Balcony = pro[7];
+            Price = pro[8];
+        }
+
         public string AreaType { get; set; }
         public string Availability { get; set; }
         public string Balcony { get; set; }
